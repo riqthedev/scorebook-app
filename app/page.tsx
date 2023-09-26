@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import TeamForm from "@/components/forms/team/page"
+import TeamForm from "@/components/forms/team/TeamForm"
 
 
 export default function Home() {
