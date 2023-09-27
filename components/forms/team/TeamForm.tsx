@@ -9,7 +9,7 @@ import teamSchema from "@/validations/validTeam";
 import { Button } from "@/components/ui/button";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export function TeamForm() {
+export default function TeamForm() {
     const form = useForm<z.infer<typeof teamSchema>>({
         resolver: zodResolver(teamSchema),
         defaultValues: {
@@ -18,9 +18,9 @@ export function TeamForm() {
     });
 
 
-    function onSubmit(event) {
+    function onSubmit(values:any) {
         
-
+        console.log(values)
     }
 
 
