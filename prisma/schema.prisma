@@ -20,7 +20,7 @@ model Team {
   id       Int      @id @default(autoincrement())
   teamName String   @unique
   players  Player[]
-  teamId   Int
+  
 }
 
 model Player {

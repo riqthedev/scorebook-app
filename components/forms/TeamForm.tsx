@@ -5,9 +5,15 @@ import { Input } from "@/components/ui/input";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
-import teamSchema from "@/validations/validTeam";
+import teamSchema from "@/lib/validations/validTeam";
 import { Button } from "@/components/ui/button";
 import { NextApiRequest, NextApiResponse } from "next";
+import createTeam from "@/lib/actions/team.actions";
+
+
+type TeamData =  {
+    teamName: string
+}
 
 export default function TeamForm() {
     const form = useForm<z.infer<typeof teamSchema>>({
@@ -18,9 +24,9 @@ export default function TeamForm() {
     });
 
 
-    function onSubmit(values:any) {
+    function onSubmit(data:TeamData) {
         
-        console.log(values)
+        createTeam(data)
     }
 
 
