@@ -8,11 +8,11 @@ interface Params {
     teamName: string 
 }
 
-export default async function createTeam({ teamName }: Params) {
+export  async function createTeam({ teamName }: Params) {
     try {
         const team = await prisma.team.create({
             data: {
-                teamName,
+                teamName
                 
             }
         })
@@ -21,3 +21,4 @@ export default async function createTeam({ teamName }: Params) {
         console.log("Problem creating team", error)
     }
 }
+

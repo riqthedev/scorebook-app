@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import TeamForm from "@/components/forms/TeamForm"
 import PlayerForm from "@/components/forms/PlayerForm"
+import BoxScore from "@/components/shared/BoxScore"
 
 
 export default function Home() {
@@ -30,7 +31,7 @@ export default function Home() {
     //     <Button variant="outline">Login</Button>
     //   </CardFooter>
     // </Card>
-    <TeamForm/>
+    <BoxScore/>
     
   )
 }

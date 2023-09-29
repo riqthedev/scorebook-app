@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import teamSchema from "@/lib/validations/validTeam";
 import { Button } from "@/components/ui/button";
 import { NextApiRequest, NextApiResponse } from "next";
-import createTeam from "@/lib/actions/team.actions";
+// import createTeam from "@/lib/actions/team.actions";
 
 
 type TeamData =  {
@@ -23,10 +23,13 @@ export default function TeamForm() {
         }
     });
 
+    
+    
+
 
     function onSubmit(data:TeamData) {
+        //  createTeam(data)
         
-        createTeam(data)
     }
 
 
