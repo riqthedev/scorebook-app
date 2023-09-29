@@ -9,6 +9,11 @@ import {
     TableRow,
   } from "@/components/ui/table"
   
+import PlayerRow from "./PlayerRow"
+
+
+
+
 
 
 export default function BoxScore () {
@@ -25,12 +30,7 @@ export default function BoxScore () {
     </TableRow>
   </TableHeader>
   <TableBody>
-    <TableRow>
-      <TableCell className="font-medium">INV001</TableCell>
-      <TableCell>Paid</TableCell>
-      <TableCell>Credit Card</TableCell>
-      <TableCell className="text-right">$250.00</TableCell>
-    </TableRow>
+    <PlayerRow/>
   </TableBody>
 </Table>
 
