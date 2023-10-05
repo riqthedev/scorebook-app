@@ -15,7 +15,6 @@ import PlayerRow from "./PlayerRow"
 
 
 
-
 export default function BoxScore () {
 
     return (
@@ -23,10 +22,11 @@ export default function BoxScore () {
   <TableCaption>Box Score.</TableCaption>
   <TableHeader>
     <TableRow>
-      <TableHead className="w-[100px]">Player</TableHead>
-      <TableHead>Status</TableHead>
-      <TableHead>Method</TableHead>
-      <TableHead className="text-right">Amount</TableHead>
+      <TableHead className="w-[100px]">Status</TableHead>
+      <TableHead>Player</TableHead>
+      <TableHead>PTS</TableHead>
+      <TableHead>REB</TableHead>
+      <TableHead>Fouls</TableHead>
     </TableRow>
   </TableHeader>
   <TableBody>
