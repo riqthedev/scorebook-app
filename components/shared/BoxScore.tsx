@@ -9,7 +9,7 @@ import {
     TableRow,
   } from "@/components/ui/table"
   
-import PlayerRow from "./PlayerRow"
+import PlayerRows from "./PlayerRows"
 
 
 
@@ -19,10 +19,10 @@ export default function BoxScore () {
 
     return (
         <Table>
-  <TableCaption>Box Score.</TableCaption>
+  <TableCaption>Box Score</TableCaption>
   <TableHeader>
     <TableRow>
-      <TableHead className="w-[100px]">Status</TableHead>
+      <TableHead>Status</TableHead>
       <TableHead>Player</TableHead>
       <TableHead>PTS</TableHead>
       <TableHead>REB</TableHead>
@@ -30,9 +30,9 @@ export default function BoxScore () {
     </TableRow>
   </TableHeader>
   <TableBody>
-    <PlayerRow/>
+    <PlayerRows/>
   </TableBody>
 </Table>
-
+ 
     )
 }
