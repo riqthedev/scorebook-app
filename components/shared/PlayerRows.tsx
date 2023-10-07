@@ -19,6 +19,7 @@ export interface Player {
     rebounds: number;
     fouls: number;
     plus: number;
+    // TODO : implement minus 
 }
 
 
@@ -86,7 +87,7 @@ export default function PlayerRows() {
                     <TableCell>{player.points}</TableCell>
                     <TableCell>{player.rebounds}</TableCell>
                     <TableCell>{player.fouls}</TableCell>
-                    <TableCell>{player.plus}</TableCell>
+                    <TableCell data-testid={`plus-player-${player.id }`}>{player.plus}</TableCell>
                     <TableCell> <PlayerButtons player={player} updateStat={updateStat} /> </TableCell>
                 </TableRow>)
             })}
