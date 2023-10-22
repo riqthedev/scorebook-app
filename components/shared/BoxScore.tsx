@@ -27,6 +27,7 @@ export default function BoxScore () {
       <TableHead>PTS</TableHead>
       <TableHead>REB</TableHead>
       <TableHead>Fouls</TableHead>
+      <TableHead>+/-</TableHead>
     </TableRow>
   </TableHeader>
   <TableBody>
