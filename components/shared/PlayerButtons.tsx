@@ -13,14 +13,12 @@ export default function PlayerButtons (props: Props) {
     
     return (
         <div className="player-buttons">
-            <Button className="bg-red-500">+</Button>
-            <Button>-</Button>
             <Button onClick={() => updateStat("2P")} disabled={!player.active} data-testid={`2P-button-player-${player.id}`}>Made 2PT</Button>
             <Button>Miss 2PT</Button>
             <Button>Made 3PT</Button>
             <Button>Miss 3PT</Button>
-            <Button>Foul</Button>
-            <Button>Reb</Button>
+            <Button onClick={() => updateStat("foul")}>Foul</Button>
+            <Button onClick={() => updateStat("rebound")}>Reb</Button>
         </div>
     )
 }

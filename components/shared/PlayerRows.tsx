@@ -29,12 +29,12 @@ export type Stat = "rebound" | "steal" | "FT" | "2P" | "3P" | "Miss 3P" | "Miss 
 type Players = Player[]
 
 const initialPlayers: Players = [
-    { id: 1, active: true, playerName: "K.Durant", points: 29, rebounds: 4, fouls: 0, plus: 90 },
-    { id: 2, active: true, playerName: "S,Curry", points: 40, rebounds: 2, fouls: 1, plus: 90 },
-    { id: 3, active: true, playerName: "D.Green", points: 5, rebounds: 10, fouls: 4, plus: 90 },
-    { id: 4, active: true, playerName: "J.Poole", points: 15, rebounds: 4, fouls: 1, plus: 90 },
-    { id: 5, active: true, playerName: "K.Thompson", points: 10, rebounds: 4, fouls: 2, plus: 90 },
-    { id: 6, active: false, playerName: "K.Looney", points: 2, rebounds: 18, fouls: 2, plus: 20 }
+    { id: 1, active: true, playerName: "K.Durant", points: 29, rebounds: 4, fouls: 0, plus: 0 },
+    { id: 2, active: true, playerName: "S.Curry", points: 40, rebounds: 2, fouls: 1, plus: 0 },
+    { id: 3, active: true, playerName: "D.Green", points: 5, rebounds: 10, fouls: 4, plus: 0 },
+    { id: 4, active: true, playerName: "J.Poole", points: 15, rebounds: 4, fouls: 1, plus: 0 },
+    { id: 5, active: true, playerName: "K.Thompson", points: 10, rebounds: 4, fouls: 2, plus: 0 },
+    { id: 6, active: false, playerName: "K.Looney", points: 2, rebounds: 18, fouls: 2, plus: 0 }
 ]
 const absurd = (x: never) => { }
 
@@ -55,6 +55,20 @@ const updateStatGenerator = (players: Players, setPlayers: React.Dispatch<React.
                 player.active = !player.active
                 setPlayers([...players])
                 return
+
+            case "rebound":
+                player.rebounds += 1
+                setPlayers([...players])
+                return
+            
+            case "foul":
+                while (player.fouls != 6 ) {
+                    player.fouls += 1
+                    setPlayers([...players])
+                    return 
+                }
+            
+
             default:
                 absurd(stat)
                 return

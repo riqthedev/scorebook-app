@@ -10,6 +10,7 @@ import {
   } from "@/components/ui/table"
   
 import PlayerRows from "./PlayerRows"
+import { Button } from "../ui/button"
 
 
 
@@ -28,6 +29,7 @@ export default function BoxScore () {
       <TableHead>REB</TableHead>
       <TableHead>Fouls</TableHead>
       <TableHead>+/-</TableHead>
+      <TableHead><Button>Undo</Button></TableHead> 
     </TableRow>
   </TableHeader>
   <TableBody>
