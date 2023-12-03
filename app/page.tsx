@@ -14,6 +14,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { TableHeader, TableRow, TableHead, Table, TableBody, TableCell } from "@/components/ui/table"
+import Score from "@/components/shared/Score"
+
 
 const initialMyPlayers: Players = [
   { id: 1, active: true, playerName: "K.Durant", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
@@ -30,14 +32,19 @@ const initialOpponents: Players = [
   { id: 3, active: true, playerName: "SF", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
   { id: 4, active: true, playerName: "PF", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
   { id: 5, active: true, playerName: "C", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
-
+  
 ]
 
 
 
 export default function Home() {
+
   const [myPlayers, setMyPlayers] = React.useState(initialMyPlayers)
+
+
   const [opponents, setOpponents] = React.useState(initialOpponents)
+ 
+
 
 
   return (
@@ -54,6 +61,7 @@ export default function Home() {
     //     <Button variant="outline">Login</Button>
     //   </CardFooter>
     // </Card>
+    <>
     <Table>
       <TableHeader>
         <TableRow>
@@ -64,16 +72,38 @@ export default function Home() {
           <TableHead>AST</TableHead>
           <TableHead>Fouls</TableHead>
           <TableHead>+/-</TableHead>
-          <TableHead><Button>Undo</Button></TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        <PlayerRows myPlayers={myPlayers} setMyPlayers={setMyPlayers} opponents={opponents} setOpponents={setOpponents} />
-      
-        <PlayerRows myPlayers={opponents} setMyPlayers={setOpponents} opponents={myPlayers} setOpponents={setMyPlayers} />
-
+        <PlayerRows  myPlayers={myPlayers} setMyPlayers={setMyPlayers} opponents={opponents} setOpponents={setOpponents} />
       </TableBody>
     </Table>
+
+      <Score/>
+
+        <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Status</TableHead>
+          <TableHead>Player</TableHead>
+          <TableHead>PTS</TableHead>
+          <TableHead>REB</TableHead>
+          <TableHead>AST</TableHead>
+          <TableHead>Fouls</TableHead>
+          <TableHead>+/-</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <PlayerRows   myPlayers={opponents} setMyPlayers={setOpponents} opponents={myPlayers} setOpponents={setMyPlayers} />
+      </TableBody>
+    </Table>
+    </>
+
+
+
+
+
+    
 
   )
 }

@@ -18,20 +18,33 @@
 }
 
 
-table {
-    border: 10px;
-    border-color: black;
-    
-}
 
 tr {
     padding: 100px;
 }
 
-td .divde {
+.card {
+    /* width: 500px;
+    margin: 20px;
+    padding: 20px;
+    border-color: black; */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    border-color: black;
+}
 
-   background-color: black;
-   color: black;
-   border: 2px 2px;
+
+.card-ele {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    line-height: 50px;
+    font-size: 35px;
+    
 
 }

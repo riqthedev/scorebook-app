@@ -10,6 +10,8 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import PlayerButtons from "./PlayerButtons"
+import React from "react";
+import TopHead from "./TopHead";
 
 export interface Player {
     id: number;
@@ -33,6 +35,7 @@ const absurd = (x: never) => { }
 
 const updateStatGenerator = (players: Players, setPlayers: React.Dispatch<React.SetStateAction<Players>>, opponents: Players, setOpponents: React.Dispatch<React.SetStateAction<Players>>, id: Number,): (stat: Stat) => void => {
     const player = players.find((player) => player.id == id)
+    
     return (stat: Stat): void => {
         if (!player) {
             return
@@ -44,11 +47,14 @@ const updateStatGenerator = (players: Players, setPlayers: React.Dispatch<React.
                 opponents.filter((teammate) => teammate.active).forEach((teammate) => teammate.plus -= 2)
                 setPlayers([...players])
                 setOpponents([...opponents])
+           
+                
                 return
             
             case "FT":
                 player.points += 1
                 players.filter((teammate) => teammate.active).forEach((teammate) => teammate.plus += 1)
+                
                 opponents.filter((teammate) => teammate.active).forEach((teammate) => teammate.plus -= 1)
                 setPlayers([...players])
                 return
@@ -88,11 +94,10 @@ const updateStatGenerator = (players: Players, setPlayers: React.Dispatch<React.
 
 
 
-export default function PlayerRows(props: {myPlayers: Players, setMyPlayers: React.Dispatch<React.SetStateAction<Players>>, opponents: Players, setOpponents: React.Dispatch<React.SetStateAction<Players>> } ) {
-    const {myPlayers, setMyPlayers, opponents, setOpponents } = props
-
-
-
+export default function PlayerRows(props: { myPlayers: Players, setMyPlayers: React.Dispatch<React.SetStateAction<Players>>, opponents: Players, setOpponents: React.Dispatch<React.SetStateAction<Players>> } ) {
+    const { myPlayers, setMyPlayers, opponents, setOpponents} = props
+    const [myScore, setMyScore] = React.useState(0)
+    const [opponentScore, setOpponentScore] = React.useState(0)
 
 
 
@@ -101,7 +106,8 @@ export default function PlayerRows(props: {myPlayers: Players, setMyPlayers: Rea
             {myPlayers.map(player => {
                 const updateStat = updateStatGenerator(myPlayers, setMyPlayers, opponents, setOpponents , player.id)
                 const cantSub = player.active || myPlayers.filter((teammate) => teammate.active).length < 5 
-                return (<TableRow key={player.id}>
+                return ( 
+                <TableRow key={player.id}>
                     <TableCell><input type="checkbox" disabled={!cantSub} checked={player.active} onChange={() => updateStat("sub")} /></TableCell>
                     <TableCell>{player.playerName}</TableCell>
                     <TableCell>{player.points}</TableCell>
@@ -111,6 +117,7 @@ export default function PlayerRows(props: {myPlayers: Players, setMyPlayers: Rea
                     <TableCell data-testid={`plus-player-${player.id }`}>{player.plus}</TableCell>
                     <TableCell> <PlayerButtons player={player} updateStat={updateStat} /> </TableCell>
                 </TableRow>)
+                
             })}
         </>
     )
