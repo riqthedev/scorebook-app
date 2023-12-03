@@ -19,6 +19,7 @@ export interface Player {
     rebounds: number;
     fouls: number;
     plus: number;
+    assists: number;
 }
 
 
@@ -61,6 +62,11 @@ const updateStatGenerator = (players: Players, setPlayers: React.Dispatch<React.
                 player.rebounds += 1
                 setPlayers([...players])
                 return
+
+            case "assist":
+                player.assists += 1
+                setPlayers([...players])
+                return
             
             case "foul":
                 while (player.fouls != 6 ) {
@@ -100,6 +106,7 @@ export default function PlayerRows(props: {myPlayers: Players, setMyPlayers: Rea
                     <TableCell>{player.playerName}</TableCell>
                     <TableCell>{player.points}</TableCell>
                     <TableCell>{player.rebounds}</TableCell>
+                    <TableCell>{player.assists}</TableCell>
                     <TableCell>{player.fouls}</TableCell>
                     <TableCell data-testid={`plus-player-${player.id }`}>{player.plus}</TableCell>
                     <TableCell> <PlayerButtons player={player} updateStat={updateStat} /> </TableCell>

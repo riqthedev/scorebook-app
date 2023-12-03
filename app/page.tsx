@@ -16,20 +16,20 @@ import { Label } from "@/components/ui/label"
 import { TableHeader, TableRow, TableHead, Table, TableBody, TableCell } from "@/components/ui/table"
 
 const initialMyPlayers: Players = [
-  { id: 1, active: true, playerName: "K.Durant", points: 0, rebounds: 0, fouls: 0, plus: 0 },
-  { id: 2, active: true, playerName: "S.Curry", points: 0, rebounds: 0, fouls: 0, plus: 0 },
-  { id: 3, active: true, playerName: "D.Green", points: 0, rebounds: 0, fouls: 0, plus: 0 },
-  { id: 4, active: true, playerName: "J.Poole", points: 0, rebounds: 0, fouls: 0, plus: 0 },
-  { id: 5, active: true, playerName: "K.Thompson", points: 0, rebounds: 0, fouls: 0, plus: 0 },
-  { id: 6, active: false, playerName: "K.Looney", points: 0, rebounds: 0, fouls: 0, plus: 0 }
+  { id: 1, active: true, playerName: "K.Durant", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
+  { id: 2, active: true, playerName: "S.Curry", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
+  { id: 3, active: true, playerName: "D.Green", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
+  { id: 4, active: true, playerName: "J.Poole", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
+  { id: 5, active: true, playerName: "K.Thompson", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
+  { id: 6, active: false, playerName: "K.Looney", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 }
 ]
 
 const initialOpponents: Players = [
-  { id: 1, active: true, playerName: "PG", points: 0, rebounds: 0, fouls: 0, plus: 0 },
-  { id: 2, active: true, playerName: "SG", points: 0, rebounds: 0, fouls: 0, plus: 0 },
-  { id: 3, active: true, playerName: "SF", points: 0, rebounds: 0, fouls: 0, plus: 0 },
-  { id: 4, active: true, playerName: "PF", points: 0, rebounds: 0, fouls: 0, plus: 0 },
-  { id: 5, active: true, playerName: "C", points: 0, rebounds: 0, fouls: 0, plus: 0 },
+  { id: 1, active: true, playerName: "PG", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
+  { id: 2, active: true, playerName: "SG", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
+  { id: 3, active: true, playerName: "SF", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
+  { id: 4, active: true, playerName: "PF", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
+  { id: 5, active: true, playerName: "C", points: 0, rebounds: 0, fouls: 0, plus: 0, assists:0 },
 
 ]
 
@@ -61,6 +61,7 @@ export default function Home() {
           <TableHead>Player</TableHead>
           <TableHead>PTS</TableHead>
           <TableHead>REB</TableHead>
+          <TableHead>AST</TableHead>
           <TableHead>Fouls</TableHead>
           <TableHead>+/-</TableHead>
           <TableHead><Button>Undo</Button></TableHead>
