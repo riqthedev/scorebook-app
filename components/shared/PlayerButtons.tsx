@@ -13,12 +13,12 @@ export default function PlayerButtons (props: Props) {
     
     return (
         <div className="player-buttons">
-            <Button onClick={() => updateStat("2P")} disabled={!player.active} data-testid={`2P-button-player-${player.id}`}>Made 2PT</Button>
-            <Button>Miss 2PT</Button>
-            <Button>Made 3PT</Button>
-            <Button>Miss 3PT</Button>
-            <Button onClick={() => updateStat("foul")}>Foul</Button>
-            <Button onClick={() => updateStat("rebound")}>Reb</Button>
+            <button onClick={() => updateStat("2P")} disabled={!player.active} data-testid={`2P-button-player-${player.id}`}>Made 2PT</button>
+            <button>Miss 2PT</button>
+            <button>Made 3PT</button>
+            <button>Miss 3PT</button>
+            <button onClick={() => updateStat("foul")}>Foul</button>
+            <button onClick={() => updateStat("rebound")}>Reb</button>
         </div>
     )
 }

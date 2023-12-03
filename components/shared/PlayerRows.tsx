@@ -19,26 +19,18 @@ export interface Player {
     rebounds: number;
     fouls: number;
     plus: number;
-    // TODO : implement minus 
 }
 
 
 export type Stat = "rebound" | "steal" | "FT" | "2P" | "3P" | "Miss 3P" | "Miss 2P" | "Miss FT" | "assist" | "block" | "foul" | "sub"
 
 
-type Players = Player[]
+export type Players = Player[]
 
-const initialPlayers: Players = [
-    { id: 1, active: true, playerName: "K.Durant", points: 29, rebounds: 4, fouls: 0, plus: 0 },
-    { id: 2, active: true, playerName: "S.Curry", points: 40, rebounds: 2, fouls: 1, plus: 0 },
-    { id: 3, active: true, playerName: "D.Green", points: 5, rebounds: 10, fouls: 4, plus: 0 },
-    { id: 4, active: true, playerName: "J.Poole", points: 15, rebounds: 4, fouls: 1, plus: 0 },
-    { id: 5, active: true, playerName: "K.Thompson", points: 10, rebounds: 4, fouls: 2, plus: 0 },
-    { id: 6, active: false, playerName: "K.Looney", points: 2, rebounds: 18, fouls: 2, plus: 0 }
-]
+
 const absurd = (x: never) => { }
 
-const updateStatGenerator = (players: Players, setPlayers: React.Dispatch<React.SetStateAction<Players>>, id: Number): (stat: Stat) => void => {
+const updateStatGenerator = (players: Players, setPlayers: React.Dispatch<React.SetStateAction<Players>>, opponents: Players, setOpponents: React.Dispatch<React.SetStateAction<Players>>, id: Number,): (stat: Stat) => void => {
     const player = players.find((player) => player.id == id)
     return (stat: Stat): void => {
         if (!player) {
@@ -48,8 +40,13 @@ const updateStatGenerator = (players: Players, setPlayers: React.Dispatch<React.
             case "2P":
                 player.points += 2
                 players.filter((teammate) => teammate.active).forEach((teammate) => teammate.plus += 2)
+                opponents.filter((teammate) => teammate.active).forEach((teammate) => teammate.plus -= 2)
                 setPlayers([...players])
+                setOpponents([...opponents])
                 return
+            
+
+                
 
             case "sub":
                 player.active = !player.active
@@ -81,9 +78,8 @@ const updateStatGenerator = (players: Players, setPlayers: React.Dispatch<React.
 
 
 
-export default function PlayerRows() {
-
-    const [players, setPlayers] = useState<Players>(initialPlayers)
+export default function PlayerRows(props: {myPlayers: Players, setMyPlayers: React.Dispatch<React.SetStateAction<Players>>, opponents: Players, setOpponents: React.Dispatch<React.SetStateAction<Players>> } ) {
+    const {myPlayers, setMyPlayers, opponents, setOpponents } = props
 
 
 
@@ -92,9 +88,9 @@ export default function PlayerRows() {
 
     return (
         <>
-            {players.map(player => {
-                const updateStat = updateStatGenerator(players, setPlayers, player.id)
-                const cantSub = player.active || players.filter((teammate) => teammate.active).length < 5 
+            {myPlayers.map(player => {
+                const updateStat = updateStatGenerator(myPlayers, setMyPlayers, opponents, setOpponents , player.id)
+                const cantSub = player.active || myPlayers.filter((teammate) => teammate.active).length < 5 
                 return (<TableRow key={player.id}>
                     <TableCell><input type="checkbox" disabled={!cantSub} checked={player.active} onChange={() => updateStat("sub")} /></TableCell>
                     <TableCell>{player.playerName}</TableCell>
