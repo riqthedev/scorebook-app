@@ -45,8 +45,12 @@ const updateStatGenerator = (players: Players, setPlayers: React.Dispatch<React.
                 setOpponents([...opponents])
                 return
             
-
-                
+            case "FT":
+                player.points += 1
+                players.filter((teammate) => teammate.active).forEach((teammate) => teammate.plus += 1)
+                opponents.filter((teammate) => teammate.active).forEach((teammate) => teammate.plus -= 1)
+                setPlayers([...players])
+                return
 
             case "sub":
                 player.active = !player.active
