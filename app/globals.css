@@ -2,16 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body {
+    /* background-color: #335C81; */
+}
 
 .player-buttons button {
 
     width: 90px;
     height: 20px;
-    background-color: black;
+    background-color: #65AFFF;
     border-radius: 5px;
     margin: 5px;
-    color: white;
+    border:2px solid #1B2845 ;
+    color: black;
     font-size: 12px;
     
 
@@ -21,30 +24,45 @@
 
 tr {
     padding: 100px;
+    
 }
 
 .card {
-    /* width: 500px;
-    margin: 20px;
-    padding: 20px;
-    border-color: black; */
-    margin: 0;
+    
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh;
-    border-color: black;
+    height: 15vh;
+    border: 2px solid black;
+    border-radius: 0px;
+    
+
+    
+    
 }
 
 
 .card-ele {
-    float: left;
-    width: 150px;
-    height: 150px;
-    margin: 10px;
-    line-height: 50px;
-    font-size: 35px;
+    
+    font-size: 30px;
+    color: #335C81;
+    
+    
+    
     
 
+}
+
+
+.text-slate-500 {
+    color: black;
+    
+    
+}
+
+
+.table-head, tr {
+    border: 2px solid black;
+    color: black;
 }

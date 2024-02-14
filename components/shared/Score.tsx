@@ -11,16 +11,18 @@ import {
 import React from "react"
 
 
-export default function Score() {
+
+export default function Score( props: {home: number, away: number}) {
     
+    const {home, away} = props
 
     return (
         <Card className="card">
             <CardHeader>
             </CardHeader>
             <CardContent className="card-ele">
-                <p>Home:</p>
-                <p>Away:</p>
+                <p>Home: {home}</p>
+                <p>Away: {away}</p>
             </CardContent>
         </Card>
 

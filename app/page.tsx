@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { TableHeader, TableRow, TableHead, Table, TableBody, TableCell } from "@/components/ui/table"
 import Score from "@/components/shared/Score"
+import { useState } from "react"
 
 
 const initialMyPlayers: Players = [
@@ -38,13 +39,14 @@ const initialOpponents: Players = [
 
 
 export default function Home() {
+  const initialMyPoints = initialMyPlayers.reduce((total, player) => total + player.points, 0);
+  const initialOpponentPoints = initialOpponents.reduce((total, player) => total + player.points, 0);
+  
 
   const [myPlayers, setMyPlayers] = React.useState(initialMyPlayers)
-
-
   const [opponents, setOpponents] = React.useState(initialOpponents)
- 
 
+  
 
 
   return (
@@ -63,7 +65,7 @@ export default function Home() {
     // </Card>
     <>
     <Table>
-      <TableHeader>
+      <TableHeader className="table-head">
         <TableRow>
           <TableHead>Status</TableHead>
           <TableHead>Player</TableHead>
@@ -75,14 +77,16 @@ export default function Home() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <PlayerRows  myPlayers={myPlayers} setMyPlayers={setMyPlayers} opponents={opponents} setOpponents={setOpponents} />
+        <PlayerRows      myPlayers={myPlayers} setMyPlayers={setMyPlayers} opponents={opponents} setOpponents={setOpponents} />
       </TableBody>
     </Table>
 
-      <Score/>
+      <Score home={myPlayers.reduce((i,p) => i + p.points, 0)} away={opponents.reduce((i,p) => i + p.points, 0)} />
+
+
 
         <Table>
-      <TableHeader>
+      <TableHeader className="table-head">
         <TableRow>
           <TableHead>Status</TableHead>
           <TableHead>Player</TableHead>
